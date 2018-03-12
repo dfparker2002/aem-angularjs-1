@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+    <scr:component name="com.slingservlet.com.slingservlet.ajaxdemo.MySlingServletDemo">
+        <implementation class="com.slingservlet.com.slingservlet.ajaxdemo.MySlingServletDemo"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Servlet"/>
+        </service>
+        <property name="sling.servlet.paths">
+            /bin/abcServlet
+        </property>
+        <property name="sling.servlet.methods">
+            GET
+            POST
+        </property>
+        <property name="service.vendor" value="Adobe"/>
+        <property name="service.pid" value="com.slingservlet.com.slingservlet.ajaxdemo.MySlingServletDemo"/>
+    </scr:component>
+</components>

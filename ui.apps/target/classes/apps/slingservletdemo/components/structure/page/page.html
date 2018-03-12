@@ -1,0 +1,101 @@
+<html lang="en">
+
+<head>
+<sly
+	data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-include="partials/head.html" data-sly-unwrap />
+<sly data-sly-include="partials/headlibs.html" data-sly-unwrap />
+
+<sly data-sly-call="${clientlib.all @ categories='cq.jquery,cq.angular'}" />
+<sly
+	data-sly-call="${clientlib.css @ categories='com.slingservlet.demo.page'}" />
+
+</head>
+
+<body>
+
+
+	<h2>Test custom components</h2>
+	<p id="dd0">Hello</p>
+	<h2>form cling post demo</h2>
+	<div class="container">
+		<div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">First Name</label> <input
+					type="text" class="form-control" id="firstname"
+					placeholder="Enter first Name">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Last Name</label> <input
+					type="text" class="form-control" id="lastname"
+					placeholder="Last name">
+			</div>
+			<button type="submit" class="btn btn-primary" id="btn1">Submit</button>
+		</div>
+	</div>
+	<div class="container">
+		<p>old data before post</p>
+		<p id="dd1">abcServlet</p>
+		<br>
+		<hr/>
+		<button type="submit" class="btn btn-primary" id="btn2">Submit
+			to get and post</button>
+		<br>
+		<p id="dd2">old data before get</p>
+		
+		<hr />
+		<button type="submit" class="btn btn-primary" id="btn3">Submit
+			to get</button>
+		<br>
+		<p id="dd3">old data before get</p>
+	</div>
+	<h2>below is :Angularjs section</h2>
+	<div ng-app="myApp">
+    	<div ng-controller="myCtrl">
+    		<form ng-submit="submitForm()">
+    			Firsname: <input type="text" ng-model="user.firstName"><br>
+    			Lastname: <input type="text" ng-model="user.lastName"><br>
+    			<input type="submit" value="Save one" ng-if="saveflag">
+    		    <button class="btn btn-warning"  ng-click="editIt()" ng-if="edtflag">Edit This</button>
+    			
+    		</form>
+      		<h2>{{uname | json}}</h2>
+      		<h2>New user: {{newuser |json}}</h2>
+      		<h2>otheruser:{{otheruser|json}}</h2>
+      		<table class="table table-hover">
+      			<thead>
+      			    <th>Index</th>
+      				<th>id</th>
+      				<th>firstname</th>
+      				<th>Lastname</th>
+      				<th>Action</th>
+      				
+      			</thead>
+      			<tbody>
+      				<tr ng-repeat="it in result">
+      					<td>{{$index}}</td>
+	      				<td>{{it.id}}</td>
+	      				<td>{{it.firstName}}</td>
+	      				<td>{{it.lastName}}</td>
+	      				<td>
+	      					<button class="btn btn-warning" id="btnedt" ng-click="editOne(it,$index)">Edit</button>
+	      					<button class="btn btn-danger" id="btndel" ng-click="deleteOne($index)">Delete</button>
+	      				</td>
+      				</tr>
+      			</tbody>
+      		</table>
+      		
+
+    	</div>
+  	</div>
+
+	<div
+		data-sly-resource="${'log' @ resourceType='foundation/components/parsys'}"></div>
+
+	<sly
+		data-sly-call="${clientlib.js @ categories='com.slingservlet.demo.page'}" />
+
+
+</body>
+
+</html>
